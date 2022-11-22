@@ -1,0 +1,3 @@
+.slider__container--opposite {
+  @include two-cards-slider(275px, 20px);
+}

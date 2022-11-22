@@ -2,10 +2,10 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/repo-parcel-01",
+  "homepage": "https://GHKirill.github.io/parcel-project-test2",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /repo-parcel-01/"
+    "build": "parcel build src/*.html --public-url /parcel-project-test2/"
   },
   "repository": {
     "type": "git",

@@ -1,0 +1,3 @@
+.slider__container-three {
+  @include three-cards-slider(270px, 180px, 20px, 'center');
+}
