@@ -1,4 +1,4 @@
-@mixin slider-arrows() {
+@mixin slider-arrows2() {
   & .slick-prev.slick-arrow::before {
     content: '';
     display: inline-block;
@@ -40,31 +40,28 @@
   }
 }
 
-@mixin two-cards-slider($card-width, $margin, $left: 0px, $right: 0px) {
+@mixin two-cards-slider2($card-width, $margin, $left: 0px, $right: 0px) {
   position: relative;
   width: calc($card-width * 2 + $margin - $right);
   left: -$left;
-  // padding-bottom: 70px;
-  // border: 1px solid black;
-  // overflow: hidden;
-
+  border: 1px solid black;
+  overflow: hidden;
   & img {
     display: block;
     width: $card-width;
     object-fit: cover;
     object-position: center;
-    // outline: 1px solid blue;
+    outline: 1px solid blue;
   }
   & ul {
-    margin: 0;
-    padding: 0;
     position: relative;
-    // padding: 0 0 70px;
+    padding: 0 0 70px;
     width: calc($card-width * 2 + $margin * 2);
   }
   & li {
     margin-right: $margin;
-    // outline: 1px solid red;
+    padding: 0;
+    outline: 1px solid red;
   }
   & .slick-prev.slick-arrow::before {
     content: '';
@@ -109,28 +106,26 @@
   // }
 }
 
-@mixin three-cards-slider($width-max, $width-min, $margin, $place-of-big) {
-  // border: 1px dotted green;
+@mixin three-cards-slider2($width-max, $width-min, $margin, $place-of-big) {
+  border: 1px dotted green;
   position: relative;
   width: calc($width-max + ($width-min + $margin) * 2 - 0px);
   left: calc(($width-min + $margin) * (0) - 0px);
   left: 0;
-  padding: 0 0 70px;
   overflow: hidden;
   & img {
     width: $width-min;
     height: $width-max;
     object-fit: cover;
     object-position: center;
-    // outline: 1px solid blue;
+    outline: 1px solid blue;
   }
   & li {
     margin-right: $margin;
     display: inline;
   }
   & ul {
-    margin: 0;
-    // padding: 0 0 70px;
+    padding: 0 0 70px;
     //
     width: calc($width-max + ($width-min + $margin) * 4);
     @if $place-of-big == 'right' {
@@ -144,7 +139,7 @@
     }
   }
   & li.slick-active > img {
-    // outline: 1px solid red;
+    outline: 1px solid red;
     width: $width-max;
     object-fit: cover;
     object-position: center;
@@ -158,7 +153,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 10;
   }
   & .slick-prev.slick-arrow {
     position: absolute;
@@ -179,7 +173,6 @@
     background-repeat: no-repeat;
     background-size: cover;
     cursor: pointer;
-    z-index: 10;
   }
   & .slick-next.slick-arrow {
     position: absolute;

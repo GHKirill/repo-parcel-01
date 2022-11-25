@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+.container {
+  max-width: 1280px;
+  padding: 0 85px;
+  margin: 0 auto;
+}
+.restaurant-about {
+  background-color: #fffdee;
+  height: 1275px;
+  padding: 120px 0;
+  background-image: repeating-linear-gradient(
+    to right,
+    #fffdee,
+    #fffdee 338px,
+    rgba(186, 186, 186, 0.4) 338px,
+    rgba(186, 186, 186, 0.4) 339px,
+    #fffdee 339px,
+    #fffdee 641px,
+    rgba(186, 186, 186, 0.4) 641px,
+    rgba(186, 186, 186, 0.4) 642px,
+    #fffdee 642px,
+    #fffdee 943px,
+    rgba(186, 186, 186, 0.4) 943px,
+    rgba(186, 186, 186, 0.4) 944px,
+    #fffdee 944px
+  );
+}
+.restaurant-about__container {
+  position: relative;
+  display: flex;
+  gap: 40px;
+}
+.restaurant-about__wrapper-first {
+  width: 518px;
+}
+.restaurant-about__slogan {
+  padding: 0;
+  margin: 0 0 4px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #b4b4b4;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: calc(36.8 / 32);
+}
+.restaurant-about__logo {
+  padding: 0;
+  margin: 0 0 24px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #b4b4b4;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: calc(68.4 / 64);
+}
+.restaurant-about__info-first {
+  padding: 0;
+  margin: 0 0 162px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: calc(20 / 16);
+  letter-spacing: 0.02em;
+  color: #5f5f5f;
+}
+.restaurant-about__wrapper-second {
+  position: relative;
+  top: -153px;
+}
+.restaurant-about__info-second {
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: calc(20 / 16);
+  letter-spacing: 0.02em;
+  position: relative;
+  left: -23px;
+
+  color: #c79002;
+  width: 312px;
+  padding: 0;
+  margin: 0 0 119px;
+}
+.restaurant-about_photo-second {
+  display: block;
+  margin-bottom: 121px;
+  position: relative;
+  box-shadow: 5px 5px 70px 17px rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+}
+
+.restaurant-about__wrapper-slider {
+  @include two-cards-slider(254px, 40px, 0px, 0px);
+  overflow: hidden;
+  padding-bottom: 70px;
+  left: 30px;
+
+  & .restaurant-about__slider-list {
+    list-style: none;
+  }
+  & .slick-prev.slick-arrow {
+    left: 77%;
+    top: 115%;
+  }
+  & .slick-next.slick-arrow {
+    left: 87%;
+    top: 115%;
+  }
+}

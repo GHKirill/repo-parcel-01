@@ -1,0 +1,105 @@
+.hotel-details {
+  // background-color: #fffdee;
+  height: 620px;
+  padding: 48px 0 96px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: repeating-linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0) 338px,
+      rgba(122, 122, 122, 0.4) 338px,
+      rgba(122, 122, 122, 0.4) 339px,
+      rgba(0, 0, 0, 0) 339px,
+      rgba(0, 0, 0, 0) 641px,
+      rgba(122, 122, 122, 0.4) 641px,
+      rgba(122, 122, 122, 0.4) 642px,
+      rgba(0, 0, 0, 0) 642px,
+      rgba(0, 0, 0, 0) 943px,
+      rgba(122, 122, 122, 0.4) 943px,
+      rgba(122, 122, 122, 0.4) 944px,
+      rgba(0, 0, 0, 0) 944px
+    ),
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+    url(../images/restaurant-details/restaurant-details_background_1x.jpg);
+}
+.hotel-details__container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 32px;
+}
+.hotel-details__wrapper-first {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: flex-end;
+  padding: 94px 0;
+}
+.hotel-details__button {
+  display: block;
+  width: 236px;
+}
+.hotel-details__logo {
+  padding: 0;
+  margin: 0 0 2px;
+  font-family: 'Times New Roman', Times, serif;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: calc(68.4 / 64);
+  text-align: right;
+}
+.hotel-details__type {
+  padding: 0;
+  margin: 0 0 40px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  text-align: right;
+}
+.hotel-details__info {
+  padding: 0;
+  margin: 0 0 40px;
+  width: 610px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.02em;
+
+  color: #bababa;
+  margin-left: auto;
+}
+.hotel-details__slider-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.hotel-details__wrapper-slider {
+  @include three-cards-slider(162px, 270px, 87px, 'center');
+  & img {
+    height: 270px;
+  }
+  & ul {
+    padding-bottom: 100px;
+    padding: 0;
+  }
+  & .slick-prev.slick-arrow::before {
+    fill: #ffffff;
+  }
+
+  & .slick-prev.slick-arrow {
+    left: 71%;
+    top: 115%;
+  }
+  & .slick-next.slick-arrow {
+    left: 75%;
+    top: 115%;
+  }
+}
