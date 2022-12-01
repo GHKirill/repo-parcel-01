@@ -62,12 +62,18 @@ $breakpoints-list: (
     display: block;
     width: calc($width * $dist);
     height: calc($width * $dist);
+    // object-fit: cover;
+    // object-position: center;
+    // min-width: 150px;
+    // min-height: 150px;
   }
   &__item {
     object-fit: cover;
     object-position: center;
     width: calc($width * $dist);
     height: calc($width * $dist);
+    // min-width: 150px;
+    // min-height: 150px;
   }
   &__buttons-wrapper {
     position: absolute;
