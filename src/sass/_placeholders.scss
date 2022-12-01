@@ -1,0 +1,100 @@
+%background-linear-gradient {
+  background-image: repeating-linear-gradient(
+    to right,
+    #fffdee,
+    #fffdee 140px,
+    rgba(186, 186, 186, 0.4) 140px,
+    rgba(186, 186, 186, 0.4) 141px,
+    #fffdee 141px,
+    #fffdee 275px,
+    rgba(186, 186, 186, 0.4) 275px,
+    rgba(186, 186, 186, 0.4) 276px,
+    #fffdee 276px
+  );
+  @include respond-to('min', 'tablet') {
+    background-image: repeating-linear-gradient(
+      to right,
+      #fffdee,
+      #fffdee 278px,
+      rgba(186, 186, 186, 0.4) 278px,
+      rgba(186, 186, 186, 0.4) 279px,
+      #fffdee 279px,
+      #fffdee 513px,
+      rgba(186, 186, 186, 0.4) 513px,
+      rgba(186, 186, 186, 0.4) 514px,
+      #fffdee 514px,
+      #fffdee 748px,
+      rgba(186, 186, 186, 0.4) 748px,
+      rgba(186, 186, 186, 0.4) 749px,
+      #fffdee 749px
+    );
+  }
+  @include respond-to('min', 'desktop') {
+    background-image: repeating-linear-gradient(
+      to right,
+      #fffdee,
+      #fffdee 338px,
+      rgba(186, 186, 186, 0.4) 338px,
+      rgba(186, 186, 186, 0.4) 339px,
+      #fffdee 339px,
+      #fffdee 641px,
+      rgba(186, 186, 186, 0.4) 641px,
+      rgba(186, 186, 186, 0.4) 642px,
+      #fffdee 642px,
+      #fffdee 943px,
+      rgba(186, 186, 186, 0.4) 943px,
+      rgba(186, 186, 186, 0.4) 944px,
+      #fffdee 944px
+    );
+  }
+}
+// %background-linear-gradient {
+//   background-image: repeating-linear-gradient(
+//     to right,
+//     $logo-header-room-color,
+//     $logo-header-room-color 140px,
+//     $bg-gradient-colo 140px,
+//     $bg-gradient-colo 141px,
+//     $logo-header-room-color 141px,
+//     $logo-header-room-color 275px,
+//     $bg-gradient-colo 275px,
+//     $bg-gradient-colo 276px,
+//     $logo-header-room-color 276px
+//   );
+//   @include respond-to('min', 'tablet') {
+//     background-image: repeating-linear-gradient(
+//       to right,
+//       $logo-header-room-color,
+//       $logo-header-room-color 278px,
+//       $bg-gradient-color 278px,
+//       $bg-gradient-color 279px,
+//       $logo-header-room-color 279px,
+//       $logo-header-room-color 513px,
+//       $bg-gradient-color 513px,
+//       $bg-gradient-color 514px,
+//       $logo-header-room-color 514px,
+//       $logo-header-room-color 748px,
+//       $bg-gradient-color 748px,
+//       $bg-gradient-color 749px,
+//       $logo-header-room-color 749px
+//     );
+//   }
+//   @include respond-to('min', 'desktop') {
+//     background-image: repeating-linear-gradient(
+//       to right,
+//       $logo-header-room-color,
+//       $logo-header-room-color 338px,
+//       $bg-gradient-color 338px,
+//       $bg-gradient-color 339px,
+//       $logo-header-room-color 339px,
+//       $logo-header-room-color 641px,
+//       $bg-gradient-color 641px,
+//       $bg-gradient-color 642px,
+//       $logo-header-room-color 642px,
+//       $logo-header-room-color 943px,
+//       $bg-gradient-color 943px,
+//       $bg-gradient-color 944px,
+//       $logo-header-room-color 944px
+//     );
+//   }
+// }

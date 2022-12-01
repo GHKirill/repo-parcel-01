@@ -1,11 +1,20 @@
 //@import './common';
 // @import './example';
+@import './_fonts';
+
 @import './_mixins';
 @import './mixins_2';
-@import './_test-slide_two';
-@import './_test-slider_three';
+@import './base';
+@import './placeholders';
+
+// @import './_test-slide_two';
+// @import './_test-slider_three';
+// @import './slider_two_new';
 @import './main_page/about_restaurant';
-@import './main_page/restaurant_details';
-@import './main_page/about_hotel';
-@import './main_page/hotel_details';
-@import './main_page/contacts';
+// @import './main_page/restaurant_details';
+
+// @import './main_page/about_hotel';
+// @import './main_page/hotel_details_new';
+// @import './main_page/contacts';
+
+// @import './main_page/about_restaurant_new';

@@ -1,0 +1,33 @@
+.slider-three {
+  @include respond-to('max', 'phone') {
+    @include slider-two-images-before-phone(
+      245px,
+      25px,
+      215px,
+      36px,
+      34px,
+      0px,
+      150px
+    );
+  }
+  @include respond-to('min', 'phone') {
+    @include slider-two-images(245px, 25px, 215px, 36px, 34px);
+    &__wrapper {
+      left: 60px;
+      margin: 0;
+    }
+  }
+  @include respond-to('min', 'tablet') {
+    @include slider-two-images(194px, 40px, 330px, 48px, 38px, 0px);
+    &__wrapper {
+      left: 0;
+      margin-left: 470px;
+    }
+  }
+  @include respond-to('min', 'desktop') {
+    @include slider-two-images(245px, 40px, 432px, 46px, 38px, 0px);
+    &__wrapper {
+      margin-left: 510px;
+    }
+  }
+}

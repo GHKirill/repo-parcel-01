@@ -1,59 +1,250 @@
-@mixin slider-arrows() {
-  & .slick-prev.slick-arrow::before {
-    content: '';
-    display: inline-block;
-    width: 30px;
-    height: 17px;
-    background-image: url('../images/vectorL.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-  & .slick-prev.slick-arrow {
-    position: absolute;
-    width: 30px;
-    height: 20px;
-    top: 90%;
-    left: 40%;
-    z-index: 5;
-  }
+$breakpoints-list: (
+  'phone': 414px,
+  'tablet': 1024px,
+  'desktop': 1280px,
+) !default;
 
-  & .slick-next.slick-arrow::before {
-    content: '';
-    display: inline-block;
-    width: 30px;
-    height: 17px;
-    background-image: url('../images/vectorR.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+@function screen-width($width) {
+  @return map-get($breakpoints-list, $width);
+}
+
+@mixin respond-to($max-min, $breakpoint) {
+  @if map-has-key($breakpoints-list, $breakpoint) and $max-min == 'min' {
+    @media screen and (min-width: map-get($breakpoints-list, $breakpoint)) {
+      @content;
+    }
+  }
+  @if map-has-key($breakpoints-list, $breakpoint) and $max-min == 'max' {
+    @media screen and (max-width: calc(map-get($breakpoints-list, $breakpoint) - 1px)) {
+      @content;
+    }
+  }
+  // @else {
+  //   @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+  //       + "Available breakpoints are: #{map-keys($breakpoints-list)}.";
+  // }
+}
+@mixin slider-two-images-before-phone(
+  $width,
+  $margin,
+  $arrow-distance-from-left,
+  // $arrows-distance-from-right: 0px,
+  // $arrow-distance-from-bottom: 35px,
+  // $arrow-distance-from-arrow: 32px,
+  $left-shift: 0px,
+  $right-shift: 0px,
+  $dist: 1
+) {
+  @include respond-to('max', 'phone') {
+    $screen-width: calc(100vw - 30px);
+    $dist: calc((100vw) / (414px));
+  }
+  &__wrapper {
+    display: flex;
+    gap: calc($margin * $dist);
+    width: calc($width * $dist);
+    gap: calc($margin);
+    width: calc($width);
+    position: relative;
+    left: calc($left-shift * $dist);
+    right: calc($right-shift * $dist);
+  }
+  &__slider-list {
+    margin: 0;
+    padding: 0;
+    width: calc($width * $dist);
+    background: #dadada;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+      2px 2px 60px 2px rgba(0, 0, 0, 1);
+    border-radius: 2px;
+  }
+  &__image {
+    display: block;
+    width: calc($width * $dist);
+    height: calc($width * $dist);
+  }
+  &__item {
+    object-fit: cover;
+    object-position: center;
+    width: calc($width * $dist);
+    height: calc($width * $dist);
+  }
+  &__buttons-wrapper {
+    position: absolute;
+    top: calc(100% + 36px);
+    left: calc($arrow-distance-from-left * $dist);
+    // left: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 108px;
+    // border: 1px solid black;
+  }
+  &__button {
+    display: flex;
+    width: 50px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    fill: black;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
   }
-  & .slick-next.slick-arrow {
-    position: absolute;
-    display: inline-block;
-    width: 30px;
-    height: 20px;
-    top: 90%;
-    left: 50%;
-    z-index: 5;
+  // &__slider-list .slick-prev.slick-arrow::before {
+  //   content: '';
+  //   display: inline-block;
+  //   width: calc(30px * $dist);
+  //   height: calc(17px * $dist);
+  //   background-image: url('../images/vectorL.svg');
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   z-index: 5;
+  // }
+  // &__slider-list .slick-prev.slick-arrow {
+  //   position: absolute;
+  //   width: calc(30px * $dist);
+  //   height: calc(17px * $dist);
+  //   top: calc(($width + $arrow-distance-from-bottom) * $dist);
+  //   left: calc(
+  //     ($width - $arrows-distance-from-right - $arrow-distance-from-arrow - 60px) *
+  //       $dist
+  //   );
+  //   z-index: 5;
+  // }
+
+  // &__slider-list .slick-next.slick-arrow::before {
+  //   content: '';
+  //   display: inline-block;
+  //   width: calc(30px * $dist);
+  //   height: calc(17px * $dist);
+  //   background-image: url('../images/vectorR.svg');
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   cursor: pointer;
+  //   z-index: 5;
+  // }
+  // &__slider-list .slick-next.slick-arrow {
+  //   position: absolute;
+  //   display: inline-block;
+  //   width: calc(30px * $dist);
+  //   height: calc(17px * $dist);
+  //   top: calc(($width + $arrow-distance-from-bottom) * $dist);
+  //   right: calc($arrows-distance-from-right * $dist);
+  //   z-index: 5;
+  // }
+}
+@mixin slider-two-images(
+  $width,
+  $margin,
+  $arrow-distance-from-left,
+  // $arrows-distance-from-right: 0px,
+  // $arrow-distance-from-bottom: 48px,
+  // $arrow-distance-from-arrow: 34px,
+  // $right-shift: 0px
+) {
+  &__wrapper {
+    display: flex;
+    flex-shrink: 1;
+    gap: $margin;
+    position: relative;
   }
+  &__slider-list {
+    margin: 0;
+    padding: 0;
+    width: $width;
+    background: #dadada;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+      2px 2px 60px 2px rgba(0, 0, 0, 1);
+    border-radius: 2px;
+  }
+  &__image {
+    display: block;
+    width: $width;
+    height: auto;
+  }
+  &__item {
+    object-fit: cover;
+    object-position: center;
+    width: $width;
+    height: $width;
+  }
+  &__buttons-wrapper {
+    position: absolute;
+    top: calc(100% + 36px);
+    left: calc($arrow-distance-from-left);
+    // left: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 108px;
+    // border: 1px solid black;
+  }
+  &__button {
+    display: flex;
+    width: 50px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    fill: black;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  // &__slider-list .slick-prev.slick-arrow::before {
+  //   content: '';
+  //   display: inline-block;
+  //   width: 30px;
+  //   height: 17px;
+  //   background-image: url('../images/vectorL.svg');
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   z-index: 5;
+  // }
+  // &__slider-list .slick-prev.slick-arrow {
+  //   position: absolute;
+  //   width: 30px;
+  //   height: 17px;
+  //   top: calc($width + $arrow-distance-from-bottom);
+  //   left: $width - $arrows-distance-from-right - $arrow-distance-from-arrow -
+  //     60px;
+  //   z-index: 5;
+  // }
+
+  // &__slider-list .slick-next.slick-arrow::before {
+  //   content: '';
+  //   display: inline-block;
+  //   width: 30px;
+  //   height: 17px;
+  //   background-image: url('../images/vectorR.svg');
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   background-size: cover;
+  //   cursor: pointer;
+  //   z-index: 5;
+  // }
+  // &__slider-list .slick-next.slick-arrow {
+  //   position: absolute;
+  //   display: inline-block;
+  //   width: 30px;
+  //   height: 17px;
+  //   top: calc($width + $arrow-distance-from-bottom);
+  //   right: $arrows-distance-from-right;
+  //   z-index: 5;
+  // }
 }
 
 @mixin two-cards-slider($card-width, $margin, $left: 0px, $right: 0px) {
   position: relative;
   width: calc($card-width * 2 + $margin - $right);
   left: -$left;
-  // padding-bottom: 70px;
-  // border: 1px solid black;
-  // overflow: hidden;
 
   & img {
     display: block;
     width: $card-width;
     object-fit: cover;
     object-position: center;
-    // outline: 1px solid blue;
   }
   & ul {
     margin: 0;
@@ -64,7 +255,6 @@
   }
   & li {
     margin-right: $margin;
-    // outline: 1px solid red;
   }
   & .slick-prev.slick-arrow::before {
     content: '';
@@ -105,8 +295,6 @@
     left: 50%;
     z-index: 5;
   }
-  // @include slider-arrows() {
-  // }
 }
 
 @mixin three-cards-slider($width-max, $width-min, $margin, $place-of-big) {
@@ -122,7 +310,6 @@
     height: $width-max;
     object-fit: cover;
     object-position: center;
-    // outline: 1px solid blue;
   }
   & li {
     margin-right: $margin;
@@ -144,7 +331,6 @@
     }
   }
   & li.slick-active > img {
-    // outline: 1px solid red;
     width: $width-max;
     object-fit: cover;
     object-position: center;
@@ -191,3 +377,91 @@
     z-index: 5;
   }
 }
+
+@mixin resolution($source) {
+  @media screen and (min-device-pixel-ratio: 1),
+    screen and (min-resolution: 96dpi),
+    screen and (min-resolution: 1dppx) {
+    background-image: url($source + '_1x.jpg');
+  }
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    background-image: url($source + '_2x.jpg');
+  }
+
+  @media screen and (min-device-pixel-ratio: 3),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+    background-image: url($source + '_3x.jpg');
+  }
+}
+// @mixin resolution2($breakpoint, $source) {
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   background-size: cover;
+//   @if $breakpoint == 'phone' {
+//     @media screen and (min-device-pixel-ratio: 1),
+//       screen and (min-resolution: 96dpi),
+//       screen and (min-resolution: 1dppx) {
+//       background-image: repeating-linear-gradient(
+//           to right,
+//           rgba(0, 0, 0, 0),
+//           rgba(0, 0, 0, 0) 140px,
+//           rgba(122, 122, 122, 0.4) 140px,
+//           rgba(122, 122, 122, 0.4) 141px,
+//           rgba(0, 0, 0, 0) 141px,
+//           rgba(0, 0, 0, 0) 275px,
+//           rgba(122, 122, 122, 0.4) 275px,
+//           rgba(122, 122, 122, 0.4) 276px,
+//           rgba(0, 0, 0, 0) 276px
+//         ),
+//         linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+//         url($source + '_1x.jpg');
+//     }
+//     @media screen and (min-device-pixel-ratio: 2),
+//       screen and (min-resolution: 192dpi),
+//       screen and (min-resolution: 2dppx) {
+//       background-image: repeating-linear-gradient(
+//           to right,
+//           rgba(0, 0, 0, 0),
+//           rgba(0, 0, 0, 0) 278px,
+//           rgba(122, 122, 122, 0.4) 278px,
+//           rgba(122, 122, 122, 0.4) 279px,
+//           rgba(0, 0, 0, 0) 279px,
+//           rgba(0, 0, 0, 0) 513px,
+//           rgba(122, 122, 122, 0.4) 513px,
+//           rgba(122, 122, 122, 0.4) 514px,
+//           rgba(0, 0, 0, 0) 514px,
+//           rgba(0, 0, 0, 0) 748px,
+//           rgba(122, 122, 122, 0.4) 748px,
+//           rgba(122, 122, 122, 0.4) 749px,
+//           rgba(0, 0, 0, 0) 749px
+//         ),
+//         linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+//         url($source + '_2x.jpg');
+//     }
+//     @media screen and (min-device-pixel-ratio: 3),
+//       screen and (min-resolution: 288dpi),
+//       screen and (min-resolution: 3dppx) {
+//       background-image: repeating-linear-gradient(
+//           to right,
+//           rgba(0, 0, 0, 0),
+//           rgba(0, 0, 0, 0) 338px,
+//           rgba(122, 122, 122, 0.4) 338px,
+//           rgba(122, 122, 122, 0.4) 339px,
+//           rgba(0, 0, 0, 0) 339px,
+//           rgba(0, 0, 0, 0) 641px,
+//           rgba(122, 122, 122, 0.4) 641px,
+//           rgba(122, 122, 122, 0.4) 642px,
+//           rgba(0, 0, 0, 0) 642px,
+//           rgba(0, 0, 0, 0) 944px,
+//           rgba(122, 122, 122, 0.4) 944px,
+//           rgba(122, 122, 122, 0.4) 945px,
+//           rgba(0, 0, 0, 0) 945px
+//         ),
+//         linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+//         url($source + '_3x.jpg');
+//     }
+//   }
+// }

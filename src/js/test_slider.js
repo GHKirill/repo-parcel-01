@@ -1,8 +1,15 @@
+// $('.multiple-items').slick({
+//   arrows: true,
+//   dots: false,
+//   infinite: true,
+//   slidesToShow: 2,
+//   slidesToScroll: 1,
+// });
 $('.multiple-items').slick({
   arrows: true,
   dots: false,
   infinite: true,
-  slidesToShow: 2,
+  slidesToShow: 1,
   slidesToScroll: 1,
   // responsive: [
   //   {

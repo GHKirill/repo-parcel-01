@@ -1,0 +1,197 @@
+// @mixin slider-two-images-before-phone(
+//   $width,
+//   $margin,
+//   $arrows-distance-from-right: 0px,
+//   $arrow-distance-from-bottom: 35px,
+//   $arrow-distance-from-arrow: 32px,
+//   $right-shift: 0px,
+//   $dist: 1
+// ) {
+//   @include respond-to('min', 'phone') {
+//     $screen-width: calc(100vw - 30px);
+//     $dist: calc((100vw) / (414px));
+//   }
+//   &__wrapper {
+//     display: flex;
+//     gap: calc($margin * $dist);
+//   }
+//   &__slider-list {
+//     position: relative;
+//     @if $right-shift > 0 {
+//       right: calc($right-shift * $dist);
+//     }
+//     @if $right-shift < 0 {
+//       left: calc($right-shift * $dist * (-1));
+//     }
+
+//     margin: 0;
+//     padding: 0;
+//     width: calc($width * $dist);
+//     background: #dadada;
+//     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25),
+//       2px 2px 60px 2px rgba(0, 0, 0, 1);
+//     border-radius: 2px;
+//   }
+//   &__image {
+//     display: block;
+//     width: calc($width * $dist);
+//   }
+//   &__item {
+//     object-fit: cover;
+//     object-position: center;
+//     width: calc($width * $dist);
+//   }
+//   &__slider-list .slick-prev.slick-arrow::before {
+//     content: '';
+//     display: inline-block;
+//     width: calc(30px * $dist);
+//     height: calc(17px * $dist);
+//     background-image: url('../images/vectorL.svg');
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     z-index: 5;
+//   }
+//   &__slider-list .slick-prev.slick-arrow {
+//     position: absolute;
+//     width: calc(30px * $dist);
+//     height: calc(17px * $dist);
+//     top: calc(($width + $arrow-distance-from-bottom) * $dist);
+//     left: calc(
+//       ($width - $arrows-distance-from-right - $arrow-distance-from-arrow - 60px) *
+//         $dist
+//     );
+//     z-index: 5;
+//   }
+
+//   &__slider-list .slick-next.slick-arrow::before {
+//     content: '';
+//     display: inline-block;
+//     width: calc(30px * $dist);
+//     height: calc(17px * $dist);
+//     background-image: url('../images/vectorR.svg');
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     cursor: pointer;
+//     z-index: 5;
+//   }
+//   &__slider-list .slick-next.slick-arrow {
+//     position: absolute;
+//     display: inline-block;
+//     width: calc(30px * $dist);
+//     height: calc(17px * $dist);
+//     top: calc(($width + $arrow-distance-from-bottom) * $dist);
+//     right: calc($arrows-distance-from-right * $dist);
+//     z-index: 5;
+//   }
+// }
+// .container__wrapper {
+//   overflow: hidden;
+// }
+.slider {
+  padding: 100px 0 100px;
+  overflow: hidden;
+  border: 1px solid black;
+}
+.container {
+  border: 1px solid red;
+}
+.orientation-wrapper {
+  padding: 100px 0 100px;
+  border: 1px solid green;
+  overflow: hidden;
+}
+.slider-two {
+  @include respond-to('max', 'phone') {
+    @include slider-two-images-before-phone(
+      245px,
+      25px,
+      215px,
+      36px,
+      34px,
+      -170px
+    );
+  }
+  @include respond-to('min', 'phone') {
+    @include slider-two-images(245px, 25px, 215px, 36px, 34px);
+    &__wrapper {
+      left: -170px;
+      margin: 0;
+    }
+  }
+  @include respond-to('min', 'tablet') {
+    @include slider-two-images(194px, 40px, 330px, 48px, 38px, 0px);
+    &__wrapper {
+      left: 0;
+      margin-left: 50px;
+    }
+  }
+  @include respond-to('min', 'desktop') {
+    @include slider-two-images(245px, 40px, 432px, 46px, 38px, 0px);
+    &__wrapper {
+      margin-left: 100px;
+    }
+  }
+}
+.slider-three {
+  @include respond-to('max', 'phone') {
+    @include slider-two-images-before-phone(
+      245px,
+      25px,
+      215px,
+      36px,
+      34px,
+      0px,
+      150px
+    );
+  }
+  @include respond-to('min', 'phone') {
+    @include slider-two-images(245px, 25px, 215px, 36px, 34px);
+    &__wrapper {
+      left: 60px;
+      margin: 0;
+    }
+  }
+  @include respond-to('min', 'tablet') {
+    @include slider-two-images(194px, 40px, 330px, 48px, 38px, 0px);
+    &__wrapper {
+      left: 0;
+      margin-left: 470px;
+    }
+  }
+  @include respond-to('min', 'desktop') {
+    @include slider-two-images(245px, 40px, 432px, 46px, 38px, 0px);
+    &__wrapper {
+      margin-left: 510px;
+    }
+  }
+}
+
+.orientation-wrapper_three-cards {
+  background-color: rgb(71, 68, 68);
+}
+.restaurant-details__wrapper-slider-three-cards {
+  display: none;
+  @include respond-to('min', 'tablet') {
+    display: block;
+    @include three-cards-slider(270px, 162px, 34px, 'right');
+    margin: 0 auto;
+
+    & .slick-prev.slick-arrow::before {
+      background-image: url(../images/arrow_left_white.svg);
+    }
+    & .slick-next.slick-arrow::before {
+      background-image: url(../images/arrow_right_white.svg);
+    }
+
+    & .slick-prev.slick-arrow {
+      left: 39%;
+      top: 112%;
+    }
+    & .slick-next.slick-arrow {
+      left: 45%;
+      top: 112%;
+    }
+  }
+}
